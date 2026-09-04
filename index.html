@@ -92,8 +92,42 @@ body.theme-dark .player-card:before{background:linear-gradient(90deg,transparent
 }
 
 .history-item{padding:14px 16px;margin-bottom:10px;border:1px solid var(--answer-border,rgba(100,116,139,.2));border-radius:14px;background:var(--answer-bg,rgba(255,255,255,.04));line-height:1.55}.history-item:last-child{margin-bottom:0}.history-item b{font-weight:850}.history-item .status{padding:7px 9px;border-radius:9px}.history-empty{padding:20px;text-align:center}
+
+/* V2.2 — theme menu always opens upward; no theme bubble */
+.theme-switcher{
+  position:fixed!important;
+  right:18px!important;
+  bottom:18px!important;
+  top:auto!important;
+  z-index:99999!important;
+}
+.theme-menu{
+  top:auto!important;
+  bottom:calc(100% + 10px)!important;
+  right:0!important;
+  left:auto!important;
+  transform-origin:bottom right!important;
+}
+.theme-menu.open{animation:themePopUp .18s ease-out!important}
+@keyframes themePopUp{
+  from{opacity:0;transform:translateY(7px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+@media(max-width:600px){
+  .theme-switcher{
+    right:10px!important;
+    bottom:10px!important;
+    top:auto!important;
+  }
+  .theme-menu{
+    top:auto!important;
+    bottom:calc(100% + 8px)!important;
+    right:0!important;
+    left:auto!important;
+    width:min(205px,calc(100vw - 20px))!important;
+  }
+}
 </style></head><body><main class="wrap"><div class="theme-switcher" id="themeSwitcher">
-  <div class="theme-bubble">TEMA</div>
   <button class="theme-toggle" id="themeToggle" aria-label="Pilih tema" aria-expanded="false">🎨</button>
   <div class="theme-menu" id="themeMenu" aria-hidden="true">
     <button class="theme-choice" data-theme="light"><span>☼</span><span><b>Terang Clean</b><small>Ringan, bersih & jelas</small></span></button>
